@@ -17,6 +17,7 @@ public class Menu {
     @Column(name = "precio", nullable = false)
     private Float precio;
 
+
     public Integer getId() {
         return id;
     }
