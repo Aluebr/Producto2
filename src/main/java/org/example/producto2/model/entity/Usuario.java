@@ -4,6 +4,7 @@ package org.example.producto2.model.entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuario")
@@ -25,6 +26,17 @@ public class Usuario implements Serializable {
 
     @Column(name = "telefono", nullable = false, length = 45, unique = true)
     private String telefono;
+
+    @ManyToMany(mappedBy = "usuarios")
+    private Set<Menu> menus;
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
+    }
 
     public Integer getId() {
         return id;

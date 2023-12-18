@@ -2,6 +2,8 @@ package org.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "menu")
 public class Menu {
@@ -17,6 +19,21 @@ public class Menu {
     @Column(name = "precio", nullable = false)
     private Float precio;
 
+    @ManyToMany
+    @JoinTable(
+            name = "menu_has_usuario",
+            joinColumns = @JoinColumn(name = "menu_id_menu"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id_usuario")
+    )
+    private Set<Usuario> usuarios;
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public Integer getId() {
         return id;
