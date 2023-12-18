@@ -27,6 +27,22 @@ public class Menu {
     )
     private Set<Usuario> usuarios;
 
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "menu_has_producto",
+            joinColumns = @JoinColumn(name = "menu_id_menu"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id_producto")
+    )
+    private Set<Producto> productos;
+
     public Set<Usuario> getUsuarios() {
         return usuarios;
     }

@@ -3,6 +3,8 @@ package org.example.producto2.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "producto")
 public class Producto {
@@ -24,6 +26,16 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "tipo_id_tipo", nullable = false)
     private Tipo tipo;
+    @ManyToMany(mappedBy = "productos")
+    private Set<Menu> menus;
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
+    }
 
     public Integer getId() {
         return id;
