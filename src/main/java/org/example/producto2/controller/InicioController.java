@@ -19,11 +19,11 @@ public class InicioController {
         return "inicio";
     }
 
-    @PostMapping("/lista")
+    /*@PostMapping("/lista")
     public String createMenu(@ModelAttribute Menu menu) {
         inicioDAO.createMenu(menu);
         return "redirect:/lista/new";
-    }
+    }*/
 
     // Additional controller methods for read, update, and delete
 }
