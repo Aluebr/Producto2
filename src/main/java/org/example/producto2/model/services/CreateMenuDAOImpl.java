@@ -2,18 +2,18 @@ package org.example.producto2.model.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
-import org.example.producto2.model.dao.MenuDAO;
+import org.example.producto2.model.dao.Create_MenuDAO;
 import org.example.producto2.model.entity.Menu;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class MenuDAOImpl implements MenuDAO {
+public class CreateMenuDAOImpl implements Create_MenuDAO {
 
     private EntityManager entityManager;
 
-    public MenuDAOImpl(EntityManager entityManager){
+    public CreateMenuDAOImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 

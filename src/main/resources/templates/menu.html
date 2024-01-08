@@ -1,25 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Menu</title>
+    <title>Title</title>
 </head>
 <body>
-
-<h1>Create Menu</h1>
-
-<form th:action="@{/menu}" th:object="${menu}" method="post">
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" th:field="*{nombre}" />
-    <br/>
-
-    <label for="precio">Precio:</label>
-    <input type="text" id="precio" name="precio" th:field="*{precio}" />
-    <br/>
-
-
-    <button type="submit">Guardar</button>
-</form>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ import org.example.producto2.model.entity.Menu;
 
 import java.util.List;
 
-public interface MenuDAO {
+public interface Create_MenuDAO {
 
 
     Menu findById(Long id);
