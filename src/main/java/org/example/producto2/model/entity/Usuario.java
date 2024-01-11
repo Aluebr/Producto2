@@ -4,6 +4,7 @@ package org.example.producto2.model.entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -77,4 +78,23 @@ public class Usuario implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "users_roles",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName =
+                            "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private Set<Role> rolesAssociated = new HashSet<>();
+
+    public Set<Role> getRolesAssociated() {
+        return rolesAssociated;
+    }
+
+    public void setRolesAssociated(Set<Role> rolesAssociated) {
+        this.rolesAssociated = rolesAssociated;
+    }*/
 }

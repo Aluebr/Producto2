@@ -9,5 +9,10 @@ INSERT INTO tipo (descripcion, nombre) VALUES ('Plato de pasta', 'Spaghetti con 
 INSERT INTO producto (kcal, tipo_id_tipo, descripcion, nombre) VALUES (500, 1, 'Hamburguesa con queso, lechuga y tomate', 'Hamburguesa Clásica');
 INSERT INTO producto (kcal, tipo_id_tipo, descripcion, nombre) VALUES (600, 1, 'Hamburguesa con tomate y bacon', 'Hamburguesa con Bacon');
 INSERT INTO producto (kcal, tipo_id_tipo, descripcion, nombre) VALUES (700, 1, 'Hamburguesa con bacon y huevo', 'Hamburguesa con Bacon y Huevo');
+INSERT INTO producto (kcal, tipo_id_tipo, descripcion, nombre) VALUES (800, 3, 'Kebab mixto con patatas', 'Kebab Mixto');
+
+INSERT INTO menu (precio,nombre) VALUES (9,'Kebab Plato + Patatas');
+INSERT INTO menu (precio,nombre) VALUES (5.5,'Durum + Bebida');
+INSERT INTO menu (precio,nombre) VALUES (10,'Hamburgesa con queso + Bebida');
 
 
