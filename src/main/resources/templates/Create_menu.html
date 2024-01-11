@@ -74,14 +74,19 @@
 
     <div class="form-group">
         <label for="productos">Productos:</label>
-        <select id="productos" name="productos" th:field="*{productos}" multiple="multiple">
+        <select id="productos" name="productosID" multiple="multiple">
             <option th:each="producto : ${productos}"
                     th:value="${producto.id}"
                     th:text="${producto.nombre}">Producto</option>
         </select>
+
     </div>
 
     <button type="submit">Guardar</button>
+    <div th:if="${error}" th:text="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
 </form>
 
 </body>
