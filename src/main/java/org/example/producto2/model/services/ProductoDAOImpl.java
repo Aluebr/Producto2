@@ -1,21 +1,27 @@
 package org.example.producto2.model.services;
 
+import jakarta.persistence.EntityManager;
 import org.example.producto2.model.dao.ProductoDAO;
 import org.example.producto2.model.entity.Producto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public class ProductoDAOImpl implements ProductoDAO {
+
+    @Autowired
+    private EntityManager entityManager;
+
     @Override
     public Producto findById(Long id) {
-        return null;
+        return entityManager.find(Producto.class, id);
     }
 
     @Override
     public List<Producto> findAll() {
-        return null;
+        return entityManager.createQuery("SELECT p FROM Producto p", Producto.class).getResultList();
     }
 
     @Override
