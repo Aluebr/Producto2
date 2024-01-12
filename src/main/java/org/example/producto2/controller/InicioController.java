@@ -16,7 +16,7 @@ public class InicioController {
     @GetMapping("/lista/new")
     public String showCreateMenu(Model model) {
         model.addAttribute("menu", new Menu());
-        return "inicio";
+        return "index";
     }
 
     /*@PostMapping("/lista")

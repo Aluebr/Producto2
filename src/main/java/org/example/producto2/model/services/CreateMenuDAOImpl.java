@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.example.producto2.model.dao.Create_MenuDAO;
 import org.example.producto2.model.entity.Menu;
+import org.example.producto2.model.entity.Producto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,7 +25,8 @@ public class CreateMenuDAOImpl implements Create_MenuDAO {
 
     @Override
     public List<Menu> findAll() {
-        return null;
+        return entityManager.createQuery("SELECT m FROM Menu m", Menu.class).getResultList();
+
     }
 
     @Override

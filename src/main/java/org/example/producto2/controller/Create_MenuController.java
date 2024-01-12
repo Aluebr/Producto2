@@ -32,6 +32,13 @@ public class Create_MenuController {
         this.productoDAO = productoDAO;
     }
 
+    @GetMapping("/menus")
+    public String showMenus(Model model) {
+        List<Menu> menus = menuDAO.findAll();
+        model.addAttribute("menus", menus);
+        return "menus";
+
+    }
 
     @GetMapping("/menu/new")
     public String showForm(Model model) {

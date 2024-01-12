@@ -15,4 +15,5 @@ INSERT INTO menu (precio,nombre) VALUES (9,'Kebab Plato + Patatas');
 INSERT INTO menu (precio,nombre) VALUES (5.5,'Durum + Bebida');
 INSERT INTO menu (precio,nombre) VALUES (10,'Hamburgesa con queso + Bebida');
 
-
+INSERT INTO menu_has_producto (menu_id_menu, producto_id_producto) VALUES (1, 4);
+INSERT INTO menu_has_producto (menu_id_menu, producto_id_producto) VALUES (1, 3);

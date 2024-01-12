@@ -1,0 +1,59 @@
+body{
+    margin: 20px;
+}
+.banner {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    max-height: 20vh;
+}
+
+.banner img {
+    position: relative;
+    max-height: 20vh;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    animation: mover 3s forwards;
+}
+
+.banner-texto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: aparecerTexto 1s forwards;
+    animation-delay: 2s;
+    font-family: Bahnschrift, sans-serif;
+    font-size: 46px;
+    color : burlywood;
+
+}
+.content{
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+
+}
+
+
+
+@keyframes mover {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+@keyframes aparecerTexto {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

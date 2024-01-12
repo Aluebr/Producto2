@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <title>Tienda en Línea</title>
     <style>
         /* Tus estilos aquí */
@@ -41,17 +42,23 @@
     <a href="#login">Login</a>
 </div>
 
-<div class="grid-container">
-    <!-- Iterar sobre cada producto -->
-    <div class="product" th:each="producto : ${productos}">
-        <!--<img th:src="@{${producto.imagenUrl}}" alt="Producto" th:alt="${producto.nombre}"/> -->
-        <h3 th:text="${producto.nombre}">Nombre del Producto</h3>
-        <p th:text="'Descripción: ' + ${producto.descripcion}">Descripcion</p>
-        <p th:text="'Kcal: ' + ${producto.kcal}">Kcal</p>
-        <p th:text="'Tipo: ' + ${producto.tipo.nombre}">Tipo</p>
-
+<div class="container mt-4">
+    <div class="row">
+        <!-- Iterar sobre cada menú -->
+        <div th:each="menu : ${menus}" class="col-md-4 mb-4">
+            <div class="card">
+                <!--<img th:src="@{${menu.imagenUrl}}" class="card-img-top" alt="Imagen del Menú" th:alt="${menu.nombre}"/> -->
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${menu.nombre}">Nombre del Menú</h5>
+                    <p class="card-text" th:text="'Precio: ' + ${menu.precio}"></p>
+                    <ul class="list-group list-group-flush">
+                        <li th:each="producto : ${menu.productos}" class="list-group-item" th:text="${producto.nombre}"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Fin del bloque de menú -->
     </div>
-    <!-- Fin del bloque de producto -->
 </div>
 
 </body>
