@@ -40,7 +40,7 @@ public class Create_MenuController {
 
     }
 
-    @GetMapping("/menu/new")
+    @GetMapping("/menus/new")
     public String showForm(Model model) {
         Menu newMenu = new Menu();
         newMenu.setNombre("Menú Ejemplo");
