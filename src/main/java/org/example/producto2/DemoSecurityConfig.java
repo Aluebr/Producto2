@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 public class DemoSecurityConfig {
 
@@ -17,12 +18,18 @@ public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
     http.authorizeHttpRequests(configurer ->
                     configurer
                             .requestMatchers("/productos").permitAll()
-                            .requestMatchers("/leaders/**").hasRole("MANAGER")
+                            .requestMatchers("/").permitAll()
+                            .requestMatchers("img/**").permitAll()
+                            .requestMatchers("index.html").permitAll()
+                            .requestMatchers(("css/**")).permitAll()
+                            .requestMatchers(("js/**")).permitAll()
+                            .requestMatchers("/menus/new").hasRole("MANAGER")
                             .requestMatchers("/systems/**").hasRole("ADMIN")
-                            .anyRequest().authenticated())
+                            .anyRequest().authenticated()
+                            )
             .formLogin(form ->
                     form
-                            .loginPage("/MyLoginPage")
+                            .loginPage("/login")
                             .loginProcessingUrl("/authenticateTheUser")
                             .permitAll()
             )
