@@ -9,6 +9,7 @@ body{
 
     max-height: 20vh;
 }
+
 .navbar {
     display: flex;
     justify-content: space-around;

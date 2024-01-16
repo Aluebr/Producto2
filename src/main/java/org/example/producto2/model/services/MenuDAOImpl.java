@@ -2,25 +2,24 @@ package org.example.producto2.model.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
-import org.example.producto2.model.dao.Create_MenuDAO;
+import org.example.producto2.model.dao.MenuDAO;
 import org.example.producto2.model.entity.Menu;
-import org.example.producto2.model.entity.Producto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class CreateMenuDAOImpl implements Create_MenuDAO {
+public class MenuDAOImpl implements MenuDAO {
 
     private EntityManager entityManager;
 
-    public CreateMenuDAOImpl(EntityManager entityManager){
+    public MenuDAOImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
     @Override
     public Menu findById(Long id) {
-        return null;
+        return entityManager.find(Menu.class, id);
     }
 
     @Override
@@ -37,8 +36,12 @@ public class CreateMenuDAOImpl implements Create_MenuDAO {
     }
 
     @Override
-    public void delete(Menu menu) {
-
+    @Transactional
+    public void delete(Long id) {
+        Menu menu = entityManager.find(Menu.class, id);
+        if (menu != null) {
+            entityManager.remove(menu);
+        }
     }
 
 
