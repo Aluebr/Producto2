@@ -1,4 +1,4 @@
-package org.example.producto2;
+package org.example.producto2.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +19,7 @@ public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
                     configurer
                             .requestMatchers("/productos").permitAll()
                             .requestMatchers("/").permitAll()
+                            .requestMatchers("/menus/delete/{}").permitAll()
                             .requestMatchers("img/**").permitAll()
                             .requestMatchers("index.html").permitAll()
                             .requestMatchers(("css/**")).permitAll()
@@ -38,6 +39,13 @@ public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
             /*.exceptionHandling(configurer ->
                     configurer.accessDeniedPage("/access-denied"));*/
     return http.build();
+       /* http
+            .authorizeRequests(authorize -> authorize
+                    .anyRequest().permitAll()
+            )
+            .csrf(csrf -> csrf.disable()); // Desactivar CSRF usando Customizer
+
+    return http.build();*/
 }
 
     @Bean

@@ -1,10 +1,11 @@
 package org.example.producto2.controller;
 
 
+import jakarta.transaction.Transactional;
 import org.example.producto2.model.entity.Menu;
 import org.example.producto2.model.entity.Producto;
-import org.example.producto2.model.services.MenuDAOImpl;
-import org.example.producto2.model.services.ProductoDAOImpl;
+import org.example.producto2.services.MenuDAOImpl;
+import org.example.producto2.services.ProductoDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,23 +73,15 @@ public class MenuController {
         return "newMenu";
     }
 
-    /*@PostMapping("/menuDelete/{id}")
+    @DeleteMapping("/menus/delete/{id}")
     public String deleteMenu(@PathVariable Long id) {
         logger.info("HASTA AQUÍ");
         Menu menu = menuDAO.findById(id);
         logger.info(menu.getNombre());
-        if (menu != null) {
-            menuDAO.delete(id);
 
-        } else {
-
-        }
-
+        menuDAO.delete(id);
         return "redirect:/menus";
-    }*/
-
-
-
+    }
 
 
 

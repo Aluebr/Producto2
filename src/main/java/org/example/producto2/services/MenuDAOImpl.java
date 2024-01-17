@@ -1,4 +1,4 @@
-package org.example.producto2.model.services;
+package org.example.producto2.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -41,8 +41,8 @@ public class MenuDAOImpl implements MenuDAO {
         Menu menu = entityManager.find(Menu.class, id);
         if (menu != null) {
             entityManager.remove(menu);
+        } else {
+            System.out.println("No se encontró un nadador con el ID proporcionado: " + id);
         }
     }
-
-
 }

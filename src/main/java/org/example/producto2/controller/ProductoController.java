@@ -1,7 +1,7 @@
 package org.example.producto2.controller;
 
 import org.example.producto2.model.entity.Producto;
-import org.example.producto2.model.services.ProductoDAOImpl;
+import org.example.producto2.services.ProductoDAOImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

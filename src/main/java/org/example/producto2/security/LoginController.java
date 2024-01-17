@@ -1,4 +1,4 @@
-package org.example.producto2.controller.security;
+package org.example.producto2.security;
 
 import org.example.producto2.model.entity.Producto;
 import org.springframework.stereotype.Controller;
