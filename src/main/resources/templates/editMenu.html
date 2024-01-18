@@ -20,7 +20,8 @@
         <div th:unless="${success}" class="col-md-6">
             <h1 class="text-center mb-4">Create Menu</h1>
 
-            <form th:action="@{/menu}" th:object="${menu}" method="post">
+            <form th:action="@{/menu/update}" th:object="${menu}" method="post">
+                <input type="hidden" name="menuId" th:value="${menu.id}" />
                 <div class="form-group mb-3">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="nombre" th:field="*{nombre}" class="form-control"/>
@@ -56,7 +57,7 @@
                     <div th:if="${success}" class="alert alert-success mt-3" role="alert">
                         <p class="text-center">Menú añadido correctamente</p>
                         <div class="d-flex justify-content-between">
-                            <a th:href="@{/menus/new}" class="btn btn-secondary mr-2">Seguir añadiendo menús</a>
+                            <a th:href="@{/menus/new}" class="btn btn-secondary mr-2">Seguir editando menús</a>
                             <a th:href="@{/menus}" class="btn btn-info">Volver a la lista de menús</a>
                         </div>
                     </div>

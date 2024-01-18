@@ -20,12 +20,12 @@ public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
                     configurer
                             .requestMatchers("/productos").permitAll()
                             .requestMatchers("/").permitAll()
-                            .requestMatchers("/menus/delete/{}").permitAll()
                             .requestMatchers("img/**").permitAll()
                             .requestMatchers("index.html").permitAll()
                             .requestMatchers(("css/**")).permitAll()
                             .requestMatchers(("js/**")).permitAll()
                             .requestMatchers("/menus/new").hasRole("MANAGER")
+                            .requestMatchers("/menus/delete").hasRole("MANAGER")
                             .requestMatchers("/systems/**").hasRole("ADMIN")
                             .anyRequest().authenticated()
                             )

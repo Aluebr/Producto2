@@ -13,4 +13,7 @@ public interface MenuDAO {
 
     void delete(Long id);
 
+    Menu update(Menu menu);
+
+
 }

@@ -36,17 +36,16 @@
                         <li th:each="producto : ${menu.productos}" class="list-group-item" th:text="${producto.nombre}"></li>
                     </ul>
                     <div sec:authorize="hasRole('MANAGER')" class="card-footer text-center">
-                        <a href="@{/menus/edit/{id}(id=${menu.id})}" class="btn btn-primary mx-2">
+                        <a th:href="@{'/menus/edit?menuId=' + ${menu.id}}" class="btn btn-primary mx-2">
                             <i class="fas fa-edit"></i> Editar
                         </a>
-                        <a href="@{/menus/delete/{id}(id=${menu.id})}" class="btn btn-danger mx-2">
+                        <a th:href="@{'/menus/delete?menuId=' + ${menu.id}}" class="btn btn-danger mx-2">
                             <i class="fas fa-trash"></i> Eliminar
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Fin del bloque de menú -->
     </div>
 </div>
 </body>

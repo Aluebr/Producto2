@@ -9,10 +9,12 @@ import org.example.producto2.services.ProductoDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -35,6 +37,19 @@ public class MenuController {
         model.addAttribute("menus", menus);
         return "menus";
 
+    }
+
+    @GetMapping("/menus/edit")
+    public String getMenuDetail(@RequestParam("menuId") Long menuId,Model model) {
+        Menu menu = menuDAO.findById(menuId);
+        Menu newMenu = new Menu();
+        newMenu.setNombre(menu.getNombre());
+        newMenu.setPrecio(menu.getPrecio());
+
+        List<Producto> productList = productoDAO.findAll();
+        model.addAttribute("menu", newMenu);
+        model.addAttribute("productos", productList);
+        return "editMenu";
     }
 
     @GetMapping("/menus/new")
@@ -63,7 +78,7 @@ public class MenuController {
             model.addAttribute("success", true);
 
             menuDAO.save(menu);
-            //return "redirect:/menus/new";
+
         } else {
             logger.info("No se seleccionaron productos");
             model.addAttribute("error", "No se seleccionaron productos");
@@ -73,16 +88,16 @@ public class MenuController {
         return "newMenu";
     }
 
-    @DeleteMapping("/menus/delete/{id}")
-    public String deleteMenu(@PathVariable Long id) {
-        logger.info("HASTA AQUÍ");
-        Menu menu = menuDAO.findById(id);
-        logger.info(menu.getNombre());
-
-        menuDAO.delete(id);
+    @GetMapping("/menus/delete")
+    public String deleteMenu(@RequestParam("menuId") Long menuId) {
+        menuDAO.delete(menuId);
         return "redirect:/menus";
     }
 
-
+    @PostMapping("/menu/update")
+    public String updateMenu(@ModelAttribute("menu") Menu menu) {
+        menuDAO.update(menu);
+        return "redirect:/menus";
+    }
 
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Repository
 public class MenuDAOImpl implements MenuDAO {
 
@@ -44,5 +46,16 @@ public class MenuDAOImpl implements MenuDAO {
         } else {
             System.out.println("No se encontró un nadador con el ID proporcionado: " + id);
         }
+    }
+
+    @Override
+    @Transactional
+    public Menu update(Menu menu) {
+
+            Menu currentMenu = entityManager.find(Menu.class, menu.getId());
+            if (currentMenu != null) {
+                currentMenu.setNombre(menu.getNombre());
+            }
+            return entityManager.merge(currentMenu);
     }
 }
