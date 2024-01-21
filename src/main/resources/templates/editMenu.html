@@ -20,8 +20,8 @@
         <div th:unless="${success}" class="col-md-6">
             <h1 class="text-center mb-4">Create Menu</h1>
 
-            <form th:action="@{/menu/update}" th:object="${menu}" method="post">
-                <input type="hidden" name="menuId" th:value="${menu.id}" />
+            <form th:action="@{/menus/update}" th:object="${menu}" method="post">
+                <input type="hidden" name="menuId" th:value="${menu.id}"/>
                 <div class="form-group mb-3">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="nombre" th:field="*{nombre}" class="form-control"/>

@@ -45,6 +45,7 @@ public class MenuController {
         Menu newMenu = new Menu();
         newMenu.setNombre(menu.getNombre());
         newMenu.setPrecio(menu.getPrecio());
+        newMenu.setId(menu.getId());
 
         List<Producto> productList = productoDAO.findAll();
         model.addAttribute("menu", newMenu);
@@ -55,8 +56,6 @@ public class MenuController {
     @GetMapping("/menus/new")
     public String showForm(Model model) {
         Menu newMenu = new Menu();
-        newMenu.setNombre("Menú Ejemplo");
-        newMenu.setPrecio(10.0f);
 
 
         List<Producto> productList = productoDAO.findAll();
@@ -94,10 +93,36 @@ public class MenuController {
         return "redirect:/menus";
     }
 
-    @PostMapping("/menu/update")
-    public String updateMenu(@ModelAttribute("menu") Menu menu) {
-        menuDAO.update(menu);
-        return "redirect:/menus";
+    @PostMapping("/menus/update")
+    public String updateMenu(@ModelAttribute Menu menu,
+                             @RequestParam(required = false) List<Long> productosID,
+                             @RequestParam("menuId") Long menuId,
+                             Model model) {
+        Menu updatedMenu = menuDAO.findById(menuId);
+
+
+        if (productosID != null && !productosID.isEmpty()) {
+            logger.info(productosID.toString());
+            Set<Producto> productosSeleccionados = productosID.stream()
+                    .map(id -> productoDAO.findById(id))
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toSet());
+            updatedMenu.setProductos(productosSeleccionados);
+            updatedMenu.setNombre(menu.getNombre());
+            updatedMenu.setPrecio(menu.getPrecio());
+
+            model.addAttribute("success", true);
+
+            menuDAO.update(updatedMenu);
+
+        } else {
+            logger.info("No se seleccionaron productos");
+            model.addAttribute("error", "No se seleccionaron productos");
+            model.addAttribute("menu", updatedMenu);
+            model.addAttribute("productos", productoDAO.findAll());
+        }
+        return "editMenu"; // O la vista que corresponda
     }
+
 
 }
