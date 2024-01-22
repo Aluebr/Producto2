@@ -100,7 +100,6 @@ public class MenuController {
                              Model model) {
         Menu updatedMenu = menuDAO.findById(menuId);
 
-
         if (productosID != null && !productosID.isEmpty()) {
             logger.info(productosID.toString());
             Set<Producto> productosSeleccionados = productosID.stream()

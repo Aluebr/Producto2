@@ -15,7 +15,7 @@ public class MenuDAOImpl implements MenuDAO {
 
     private EntityManager entityManager;
 
-    public MenuDAOImpl(EntityManager entityManager){
+    public MenuDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -51,11 +51,10 @@ public class MenuDAOImpl implements MenuDAO {
     @Override
     @Transactional
     public Menu update(Menu menu) {
-
-            Menu currentMenu = entityManager.find(Menu.class, menu.getId());
-            if (currentMenu != null) {
-                currentMenu.setNombre(menu.getNombre());
-            }
-            return entityManager.merge(currentMenu);
+        Menu currentMenu = entityManager.find(Menu.class, menu.getId());
+        if (currentMenu != null) {
+            currentMenu.setNombre(menu.getNombre());
+        }
+        return entityManager.merge(currentMenu);
     }
 }
